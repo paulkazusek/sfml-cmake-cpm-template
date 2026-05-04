@@ -1,0 +1,15 @@
+# IDE-specific files (VS Code, JetBrains, Visual Studio)
+.vscode/
+.idea/
+.vs/
+
+# Build output directories
+build/
+out/
+
+# User-specific and generated CMake configuration files
+*.user
+CMakeUserPresets.json
+
+# CPM dependencies
+*/_deps/

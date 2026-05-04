@@ -1,0 +1,9 @@
+---
+Language: Cpp
+Standard: c++20
+BasedOnStyle: LLVM
+ColumnLimit: 100
+IndentWidth: 4
+MaxEmptyLinesToKeep: 1
+AllowShortFunctionsOnASingleLine: Empty
+---
