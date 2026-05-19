@@ -7,7 +7,7 @@ A minimal starter project for SFML 3.0 using CMake and CPM (CMake Package Manage
 - Uses **SFML 3.0** via CPM for easy dependency management
 - Minimal setup with `sf::Window` and direct OpenGL rendering
 - C++20 standard compliance
-- Automatic versioning via generated `version.h`
+- Automatic versioning via generated `version.hpp`
 - MSVC support with `/MP` multicore compilation
 - CMake Presets (Version 3) for streamlined configuration
 - Windows Console Visibility toggle (hidden by default, debug-console preset for output)
