@@ -169,7 +169,7 @@ After building, run the executable from the build directory:
 sfml-template/
 ├── src/
 │   ├── main.cpp
-│   └── version.h.in
+│   └── version.hpp.in
 ├── .clang-format
 ├── .gitignore
 ├── CMakeLists.txt

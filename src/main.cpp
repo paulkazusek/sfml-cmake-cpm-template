@@ -4,7 +4,7 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window.hpp>
 
-#include "version.h"
+#include "version.hpp"
 
 int main() {
     std::cout << "----------------------------------------" << std::endl;

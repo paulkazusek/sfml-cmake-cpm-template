@@ -45,8 +45,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Window SFML::Main)
 
 # Generate version header from template
 configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/version.h.in
-    ${CMAKE_CURRENT_BINARY_DIR}/generated/version.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/version.hpp.in
+    ${CMAKE_CURRENT_BINARY_DIR}/generated/version.hpp
     @ONLY
 )
 
