@@ -15,7 +15,7 @@ A minimal starter project for SFML 3.0 using CMake and CPM (CMake Package Manage
 ## Prerequisites
 
 - CMake 3.22 or higher (required for CMake Presets support)
-- A C++20 compatible compiler (MSVC, GCC, Clang)
+- A C++20 compatible compiler (MSVC, GCC or Clang)
 - Git
 
 ## Getting Started
@@ -181,3 +181,4 @@ sfml-template/
 
 ## License
 
+This Template is licensed under the terms of the [MIT License](LICENSE).
