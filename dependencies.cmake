@@ -19,7 +19,7 @@ CPMAddPackage(
         "SFML_BUILD_AUDIO OFF"      # Enable with ON + link SFML::Audio in CMakeLists.txt
         "SFML_BUILD_GRAPHICS OFF"   # Enable with ON + link SFML::Graphics in CMakeLists.txt
         "SFML_BUILD_NETWORK OFF"    # Enable with ON + link SFML::Network in CMakeLists.txt
-        "SFML_BUILD_WINDOW ON"      # Required for current minimal window setup
+        "SFML_BUILD_WINDOW ON"      # ON by default; link via $<$<PLATFORM_ID:Windows>:SFML::Main> (Windows only)
         "SFML_BUILD_DOC OFF"
         "SFML_BUILD_EXAMPLES OFF"
 )

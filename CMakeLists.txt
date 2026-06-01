@@ -40,8 +40,11 @@ endif()
 # C++20 standard
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
-# Link SFML libraries (minimal Window + Main setup)
-target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Window SFML::Main)
+# Link SFML libraries
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    SFML::Window 
+    $<$<PLATFORM_ID:Windows>:SFML::Main>
+)
 
 # Generate version header from template
 configure_file(
