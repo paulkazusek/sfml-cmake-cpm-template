@@ -42,7 +42,7 @@ target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
 # Link SFML libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    SFML::Window 
+    SFML::Graphics 
     $<$<PLATFORM_ID:Windows>:SFML::Main>
 )
 

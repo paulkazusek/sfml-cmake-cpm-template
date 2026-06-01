@@ -5,7 +5,7 @@ A minimal starter project for SFML 3.0 using CMake and CPM (CMake Package Manage
 ## Features
 
 - Uses **SFML 3.0** via CPM for easy dependency management
-- Minimal setup with `sf::Window` and direct OpenGL rendering
+- Minimal setup with `sf::RenderWindow` and SFML Graphics API
 - C++20 standard compliance
 - Automatic versioning via generated `version.hpp`
 - MSVC support with `/MP` multicore compilation
@@ -57,76 +57,33 @@ option(SHOW_CONSOLE "Show console window (useful for debugging)" ON)
 
 ### Implement Your Application
 
-Modify `src/main.cpp` to add your own logic. The default example creates a window with a color-changing background using direct OpenGL.
+Modify `src/main.cpp` to add your own logic.
 
-### Configure SFML Components (Optional)
+### Configure Additional SFML Components (Optional)
 
-This template uses `sf::Window` with direct OpenGL by default.
-If you want to use the SFML 2D graphics API (`sf::RenderWindow`, `sf::Sprite`, `sf::Text`, etc.), follow these steps:
+The template enables only the modules you need. By default, `SFML_BUILD_GRAPHICS`
+and `SFML_BUILD_WINDOW` are ON, with `SFML::Graphics` linked.
 
-**Adjust `dependencies.cmake`** – enable only needed modules:
-
-*Enable only the modules you need (e.g., set `SFML_BUILD_GRAPHICS ON` if you only want 2D rendering)*
+To add **Audio** or **Network**, enable them in `dependencies.cmake`:
 
 ```cmake
-CPMAddPackage(
-    NAME SFML
-    GITHUB_REPOSITORY SFML/SFML
-    GIT_TAG 3.0.0
-    VERSION 3.0.0
-    OPTIONS
-        "SFML_BUILD_AUDIO OFF"      # Enable with ON + link SFML::Audio in CMakeLists.txt
-        "SFML_BUILD_GRAPHICS OFF"   # Enable with ON + link SFML::Graphics in CMakeLists.txt
-        "SFML_BUILD_NETWORK OFF"    # Enable with ON + link SFML::Network in CMakeLists.txt
-        "SFML_BUILD_WINDOW ON"      # ON by default; link via $<$<PLATFORM_ID:Windows>:SFML::Main> (Windows only)
-        "SFML_BUILD_DOC OFF"
-        "SFML_BUILD_EXAMPLES OFF"
-)
+"SFML_BUILD_AUDIO ON"
+"SFML_BUILD_NETWORK ON"
 ```
 
-**Adjust `CMakeLists.txt`** – link matching modules:
+and link the corresponding target in `CMakeLists.txt`:
 
 Link the required SFML modules (must match the enabled modules in `dependencies.cmake`):
 ```cmake
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    SFML::Window 
+    SFML::Graphics
+    SFML::Audio       # add if needed
+    SFML::Network     # add if needed
     $<$<PLATFORM_ID:Windows>:SFML::Main>
 )
 ```
 
 Delete the `build` folder and reconfigure CMake to apply changes.
-
-**Common Examples:**
-
-- **Switch to SFML 2D Graphics**: Enable `SFML_BUILD_GRAPHICS ON` in `dependencies.cmake`, link `SFML::Graphics` and replace `sf::Window` with `sf::RenderWindow` in `src/main.cpp`:
-
-```cpp
-#include <SFML/Graphics.hpp>  // instead of <SFML/Window.hpp> and <SFML/OpenGL.hpp>
-
-int main()
-{
-    const sf::String title = "sfml-template version: " APP_VERSION;
-    sf::RenderWindow window(sf::VideoMode({800, 600}), title);
-
-    while (window.isOpen())
-    {
-        while (const std::optional event = window.pollEvent())
-        {
-            if (event->is<sf::Event::Closed>())
-                window.close();
-            else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
-                if (keyPressed->scancode == sf::Keyboard::Scancode::Escape)
-                    window.close();
-        }
-
-        window.clear(sf::Color::Black);
-        // window.draw(...);  // Draw 2D objects here
-        window.display();
-    }
-}
-```
-
-- **Enable Audio/Network**: Enable the respective modules in `dependencies.cmake` and link `SFML::Audio`/`SFML::Network` in `CMakeLists.txt`. Refer to the [SFML docs](https://www.sfml-dev.org/documentation/3.0.0/) for usage examples.
 
 ## Build the Project
 
