@@ -41,7 +41,7 @@ jobs:
         run: cmake --build build --config Release
 
       - name: Package
-        run: cpack -C Release -B build
+        run: cpack --config build/CPackConfig.cmake
 
       - uses: actions/upload-artifact@v7
         with:
