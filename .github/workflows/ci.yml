@@ -42,3 +42,8 @@ jobs:
 
       - name: Package
         run: cpack -C Release -B build
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: sfml-template-${{ matrix.name }}
+          path: build/*.zip
