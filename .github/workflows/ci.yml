@@ -43,15 +43,7 @@ jobs:
       - name: Install
         run: cmake --install build --config Release --prefix ./package
 
-      - name: Package (Linux/macOS)
-        if: runner.os != 'Windows'
-        run: zip -j sfml-template-${{ matrix.name }}.zip package/bin/sfml-template*
-
-      - name: Package (Windows)
-        if: runner.os == 'Windows'
-        run: Compress-Archive -Path package/bin/sfml-template.exe -DestinationPath sfml-template-${{ matrix.name }}.zip
-
       - uses: actions/upload-artifact@v7
         with:
           name: sfml-template-${{ matrix.name }}
-          path: sfml-template-*.zip
+          path: package/bin/sfml-template*
