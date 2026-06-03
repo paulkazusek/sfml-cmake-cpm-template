@@ -31,3 +31,12 @@ jobs:
           libxrandr-dev libxcursor-dev libxi-dev libudev-dev
           libgl1-mesa-dev libegl1-mesa-dev
           libfreetype-dev libharfbuzz-dev
+
+      - name: Configure
+        run: cmake --preset release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Package
+        run: cpack -C Release -B build
