@@ -70,5 +70,7 @@ set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
 # Enable CPack packaging
 include(CPack)
 
-# Restrict to Runtime component (must be after include(CPack)!)
-set(CPACK_COMPONENTS_ALL Runtime)
+# Override CPack components at cpack runtime via a project config file
+set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/CPackOverride.cmake")
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/CPackOverride.cmake"
+  "set(CPACK_COMPONENTS_ALL Runtime)\n")
