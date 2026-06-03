@@ -57,20 +57,4 @@ configure_file(
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/generated)
 
 # Install executable
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin COMPONENT Runtime)
-
-# CPack packaging settings
-set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
-set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
-set(CPACK_GENERATOR "ZIP")
-
-# Set the installation path to a directory without spaces
-set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
-
-# Enable CPack packaging
-include(CPack)
-
-# Override CPack components at cpack runtime via a project config file
-set(CPACK_PROJECT_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/CPackOverride.cmake")
-file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/CPackOverride.cmake"
-  "set(CPACK_COMPONENTS_ALL Runtime)\n")
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
