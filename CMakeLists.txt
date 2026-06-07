@@ -58,14 +58,3 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/g
 
 # Install executable
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
-
-# CPack packaging settings
-set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
-set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
-set(CPACK_GENERATOR "ZIP")
-
-# Set the installation path to a directory without spaces
-set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
-
-# Enable CPack packaging
-include(CPack)
