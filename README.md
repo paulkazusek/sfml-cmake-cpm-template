@@ -123,6 +123,14 @@ After building, run the executable from the build directory:
 - **Debug builds**: `./build/Debug/my-sfml-project.exe` (Windows) or `./build/Debug/my-sfml-project` (Linux/macOS)
 - **Release builds**: `./build/Release/my-sfml-project.exe` (Windows) or `./build/Release/my-sfml-project` (Linux/macOS)
 
+## CI/CD & Releases
+
+This project uses GitHub Actions for continuous integration.
+When a tag matching `v*` is pushed (e.g. `v0.3.0`), the CI pipeline
+automatically builds the project on Linux, Windows, and macOS,
+and uploads the platform-specific binaries as assets to the
+corresponding GitHub Release.
+
 ## Project Structure
 
 ```
