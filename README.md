@@ -10,6 +10,7 @@ A minimal starter project for SFML 3.0 using CMake and CPM (CMake Package Manage
 - Automatic versioning via generated `version.hpp`
 - MSVC support with `/MP` multicore compilation
 - CMake Presets (Version 3) for streamlined configuration
+- Asset management — \assets/` directory automatically copied to builds and releases`
 - Windows Console Visibility toggle (hidden by default, debug-console preset for output)
 
 ## Prerequisites
@@ -58,6 +59,19 @@ option(SHOW_CONSOLE "Show console window (useful for debugging)" ON)
 ### Implement Your Application
 
 Modify `src/main.cpp` to add your own logic.
+
+### Add Assets
+
+Place assets such as icons, textures, or fonts in the `assets/` directory.
+They are automatically copied next to the executable at build time and
+included in release packages.
+
+```cpp
+sf::Image icon;
+if (icon.loadFromFile("assets/icon.png")) {
+    window.setIcon(icon);
+}
+```
 
 ### Configure Additional SFML Components (Optional)
 
@@ -135,6 +149,8 @@ corresponding GitHub Release.
 
 ```
 sfml-template/
+├── assets/
+│   └── icon.png
 ├── src/
 │   ├── main.cpp
 │   └── version.hpp.in
