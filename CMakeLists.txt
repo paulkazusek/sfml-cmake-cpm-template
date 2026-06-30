@@ -45,6 +45,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     SFML::Graphics 
     $<$<PLATFORM_ID:Windows>:SFML::Main>
 )
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/assets
+    $<TARGET_FILE_DIR:${PROJECT_NAME}>/assets
+)
 
 # Generate version header from template
 configure_file(
@@ -58,3 +63,4 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/g
 
 # Install executable
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+install(DIRECTORY assets/ DESTINATION bin/assets)
