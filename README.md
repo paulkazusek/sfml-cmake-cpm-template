@@ -10,7 +10,7 @@ A minimal starter project for SFML 3.0 using CMake and CPM (CMake Package Manage
 - Automatic versioning via generated `version.hpp`
 - MSVC support with `/MP` multicore compilation
 - CMake Presets (Version 3) for streamlined configuration
-- Asset management — \assets/` directory automatically copied to builds and releases`
+- Asset management — assets/` directory automatically copied to builds and releases`
 - Windows Console Visibility toggle (hidden by default, debug-console preset for output)
 
 ## Prerequisites
